@@ -90,18 +90,3 @@
     </div>
 </body>
 </html>
-<script>
-/* Test-Weiterleitung (kein echtes Login!) */
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelector('form');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var emailInput = form.querySelector('input[type="email"]');
-    var email = (emailInput && emailInput.value || '').trim().toLowerCase();
-    // Regel für Admin: wenn E-Mail mit "admin" beginnt oder exakt "admin@hotel-dashboard.de"
-    var isAdmin = email.startsWith('admin') || email === 'admin@hotel-dashboard.de';
-    window.location.href = isAdmin ? '/admin' : '/app';
-  });
-});
-</script>
