@@ -105,26 +105,3 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-<script>
-/* Test-Weiterleitung (robust) – noch KEIN echtes Login */
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.querySelector('form');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Viele mögliche Selektoren, nimm den ersten Treffer
-    var emailInput = form.querySelector(
-      'input[type="email"], input[name="email"], input#email, input[name="username"], input[type="text"]'
-    );
-    var email = (emailInput && emailInput.value || '').trim().toLowerCase();
-
-    // Admin-Regel: beginnt mit "admin" ODER exakt admin@hotel-dashboard.de
-    var isAdmin = email.startsWith('admin') || email === 'admin@hotel-dashboard.de';
-
-    // Zielseite
-    var target = isAdmin ? '/admin' : '/app';
-    window.location.href = target;
-  });
-});
-</script>
