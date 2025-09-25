@@ -91,6 +91,7 @@
 </body>
 </html>
 <script>
+/* Test-Weiterleitung (kein echtes Login!) */
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.querySelector('form');
   if (!form) return;
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script>
+/* Test-Weiterleitung (robust) – noch KEIN echtes Login */
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.querySelector('form');
   if (!form) return;
