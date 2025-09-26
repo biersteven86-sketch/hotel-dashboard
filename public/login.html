@@ -1,13 +1,25 @@
 <!doctype html><html lang="de"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hotel Dashboard – Login</title>
-<style>body{font:16px system-ui;background:#0f172a;color:#e2e8f0;display:grid;place-items:center;height:100vh;margin:0}
-.card{background:#111827;padding:2rem 2.5rem;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:560px}</style>
-<body><div class="card">
-<h1>Login</h1>
-<form method="post" action="/login">
-  <div><label>E-Mail<br><input type="email" name="email" required></label></div>
-  <div><label>Passwort<br><input type="password" name="password" required minlength="8"></label></div>
-  <button type="submit">Anmelden</button>
-</form>
-</div></body></html>
+<style>
+  body{font:16px system-ui;background:#0f172a;color:#e2e8f0;display:grid;place-items:center;min-height:100vh;margin:0}
+  .card{background:#111827;padding:2rem 2.5rem;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:560px;width:92%}
+  label{display:block;margin:.5rem 0 .25rem}
+  input{width:100%;padding:.6rem .8rem;border-radius:.6rem;border:1px solid #334155;background:#0b1220;color:#e2e8f0}
+  button{margin-top:1rem;width:100%;padding:.7rem 1rem;border-radius:.6rem;background:#0ea5e9;border:0;color:#fff;font-weight:600}
+</style>
+<body>
+  <div class="card">
+    <h1>Login</h1>
+    <form method="post" action="/login" autocomplete="on">
+      <label for="email">E-Mail</label>
+      <input id="email" name="email" type="email" required autocomplete="username">
+
+      <label for="password">Passwort</label>
+      <input id="password" name="password" type="password" required minlength="8" autocomplete="current-password">
+
+      <button type="submit">Anmelden</button>
+    </form>
+    <p style="font-size:.8rem;color:#94a3b8;margin-top:1rem">Demo-Anmeldung: <code>user@test.de</code> oder <code>admin@hotel-dashboard.de</code> mit Passwort <code>Test12345!</code></p>
+  </div>
+</body></html>
