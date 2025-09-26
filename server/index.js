@@ -55,7 +55,6 @@ app.get('/app', requireAuth, (req, res) => {
 
 app.post('/logout', (req, res) => { req.session = null; res.redirect(REQ_LOGIN_PATH); });
 
-app.get('*', (_, res) => res.redirect(REQ_LOGIN_PATH));
+app.use((req, res) => res.redirect("/login"));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Hotel Dashboard server running on :' + PORT));
