@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const cookieSession = require('cookie-session');
 
 const app = express();
+app.set('trust proxy', 1); // <-- notwendig für Render (HTTPS Proxy)
 
 // --- Debug-Logs gleich am Start
 console.log('[boot] starting server process pid=%d node=%s', process.pid, process.version);
