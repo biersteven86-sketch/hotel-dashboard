@@ -1,25 +1,65 @@
-<!doctype html><html lang="de"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hotel Dashboard – Login</title>
-<style>
-  body{font:16px system-ui;background:#0f172a;color:#e2e8f0;display:grid;place-items:center;min-height:100vh;margin:0}
-  .card{background:#111827;padding:2rem 2.5rem;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:560px;width:92%}
-  label{display:block;margin:.5rem 0 .25rem}
-  input{width:100%;padding:.6rem .8rem;border-radius:.6rem;border:1px solid #334155;background:#0b1220;color:#e2e8f0}
-  button{margin-top:1rem;width:100%;padding:.7rem 1rem;border-radius:.6rem;background:#0ea5e9;border:0;color:#fff;font-weight:600}
-</style>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login · Hotel-Dashboard</title>
+  <meta name="color-scheme" content="light dark" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/login.legacy.css" />
+</head>
 <body>
-  <div class="card">
-    <h1>Login</h1>
-    <form method="post" action="/login" autocomplete="on">
-      <label for="email">E-Mail</label>
-      <input id="email" name="email" type="email" required autocomplete="username">
+  <div class="wrap">
+    <div class="card" role="group" aria-labelledby="hd-title">
+      <div class="brand-stack" aria-hidden="true">
+        <img class="hd" src="/assets/logo.png" alt="HD">
+        <img class="wordmark" src="/assets/logo.png" alt="Hotel-Dashboard" id="hd-title" style="opacity:.0; height:1px;">
+      </div>
+      <div class="title-spacer" aria-hidden="true"></div>
 
-      <label for="password">Passwort</label>
-      <input id="password" name="password" type="password" required minlength="8" autocomplete="current-password">
+      <div class="content">
+        <form action="/login" method="POST" id="loginForm" autocomplete="on" novalidate>
+          <div>
+            <label for="email">E-Mail</label>
+            <div class="field">
+              <input id="email" name="email" type="email" placeholder="z. B. user@hotel.de" autocomplete="username email" required />
+            </div>
+          </div>
 
-      <button type="submit">Anmelden</button>
-    </form>
-    <p style="font-size:.8rem;color:#94a3b8;margin-top:1rem">Demo-Anmeldung: <code>user@test.de</code> oder <code>admin@hotel-dashboard.de</code> mit Passwort <code>Test12345!</code></p>
+          <div>
+            <label for="tenant">Kunden-Code (optional)</label>
+            <div class="field">
+              <input id="tenant" name="tenant" type="text" placeholder="z. B. DEMO" autocomplete="organization" />
+            </div>
+          </div>
+
+          <div>
+            <label for="password">Passwort</label>
+            <div class="field">
+              <input id="password" name="password" type="password" placeholder="••••••••" minlength="8" autocomplete="current-password" required />
+              <button class="icon" type="button" id="togglePw" aria-label="Passwort anzeigen/ausblenden">
+                <svg id="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-5.05 0-9.27-3.11-11-8 1.02-2.93 3.03-5.19 5.47-6.53m3.17-1.19A9.77 9.77 0 0112 4c5.05 0 9.27 3.11 11 8a11.73 11.73 0 01-1.41 2.94M9.88 9.88A3 3 0 1112 15a3 3 0 01-2.12-5.12z"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+                <svg id="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="submit" id="submitBtn" type="submit">Login</button>
+        </form>
+        <p class="help">Mit dem Login akzeptierst du die Bedingungen.</p>
+      </div>
+
+      <div class="foot">
+        <small>© <span id="y"></span> Hotel-Dashboard</small>
+      </div>
+    </div>
   </div>
-</body></html>
+
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+    const p=document.getElementById('password'), tp=document.getElementById('togglePw'),
+          eyeOn=document.getElementById('eye-on'), eyeOff=document.getElementById('eye-off');
+    tp.addEventListener('click',()=>{const show=p.type==="password"; p.type=show?"text":"password"; eyeOn.style.display=show?"block":"none"; eyeOff.style.display=show?"none":"block";});
+  </script>
+</body>
+</html>
