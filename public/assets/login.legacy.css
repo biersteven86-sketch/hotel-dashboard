@@ -1,68 +1,117 @@
 :root{
-  --page:#06080c; --text:#eef2f8; --muted:#cfd6de;
-  --accent:#b71c1c; --accent-2:#7f0000; --radius:22px;
-  --panel-r:103; --panel-g:103; --panel-b:103; --panel-alpha:.50; --panel-border:rgba(255,255,255,.10);
-  --card-w:440px; --hd:180px; --word-gap:-10px; --title-w:clamp(340px,90%,620px); --title-gap:16px;
+  --page:#06080c;
+  --text:#eef2f8;
+  --muted:#cfd6de;
+  --accent:#b71c1c;
+  --accent-2:#7f0000;
+  --accent-link:#fff;
+  --panel-r:103; --panel-g:103; --panel-b:103;
+  --panel-alpha:.50;
+  --panel-border:rgba(255,255,255,.10);
+  --card-w:440px;
+  --radius:22px;
+  --hd:132px;
+  --word-gap:-28px;
+  --title-w:clamp(300px,78%,540px);
+  --title-gap:-20px;
 }
-*{box-sizing:border-box} html,body{height:100%}
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
-  margin:0; font-size:16px; line-height:1.45; color:var(--text);
+  margin:0;
+  font-size:16px;
+  line-height:1.45;
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  color:var(--text);
   background:var(--page) url("/assets/Hotel-Dashboard-hintergrund.jpg") center/cover fixed no-repeat;
 }
 .wrap{min-height:100%;display:grid;place-items:center;padding:clamp(18px,4vw,60px)}
 .card{
-  position:relative;width:min(var(--card-w),94vw);border-radius:var(--radius);
+  position:relative;
+  width:min(var(--card-w),94vw);
+  border-radius:var(--radius);
   background:rgba(var(--panel-r),var(--panel-g),var(--panel-b),var(--panel-alpha));
-  backdrop-filter:blur(8px) saturate(120%);-webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
   border:1px solid var(--panel-border);
   box-shadow:0 26px 70px rgba(0,0,0,.68),0 1px 0 rgba(255,255,255,.05) inset;
   padding:clamp(18px,2.2vw,24px);
-  padding-top:calc(var(--hd) * 1.05 + var(--title-gap) + 80px);
-  padding-bottom:10px;
+  padding-top:calc(var(--hd) * .66 + var(--title-gap) + 14px);
+  padding-bottom:8px;
+  overflow:visible;
 }
 .brand-stack{
-  position:absolute;left:50%;top:0;transform:translate(-50%,-36%);
-  display:grid;place-items:center;gap:14px;pointer-events:none;z-index:5;width:min(52vw,720px)
+  position:absolute;left:50%;top:0;
+  transform:translate(-50%,-51%);
+  display:grid;place-items:center;
+  pointer-events:none;z-index:5;
+  width:min(32vw,520px);
 }
 .brand-stack .hd{
-  width:min(150px,26vw);height:auto;display:block;
+  width:var(--hd);height:var(--hd);object-fit:contain;display:block;
   filter:drop-shadow(0 22px 38px rgba(0,0,0,.55)) drop-shadow(0 1px 0 rgba(255,255,255,.08));
 }
 .brand-stack .wordmark{
-  width:min(600px,94%);height:auto;display:block;
+  margin-top:var(--word-gap);
+  width:var(--title-w);height:auto;display:block;
   filter:drop-shadow(0 1px 0 rgba(255,255,255,.10)) drop-shadow(0 16px 26px rgba(0,0,0,.50));
 }
 .title-spacer{height:var(--title-gap)}
 .content{display:grid;gap:10px}
-
 label{display:block;font-size:15px;color:#fff;margin:0 0 4px}
 .field{
-  display:grid;grid-template-columns:1fr auto;align-items:center;min-height:48px;padding:0 12px;border-radius:14px;background:transparent;
-  border:1.2px solid rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 26px rgba(0,0,0,.40);
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  min-height:48px;padding:0 12px;border-radius:14px;
+  background:transparent;
+  border:1.2px solid rgba(255,255,255,.25);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 26px rgba(0,0,0,.40);
   transition:box-shadow .15s ease,border-color .15s ease;
 }
-.field:focus-within{border-color:rgba(255,255,255,.42);box-shadow:0 0 0 3px rgba(224,40,36,.18),0 14px 34px rgba(0,0,0,.55)}
-.field input{background:transparent;border:0;outline:0;color:#fff;font-size:16px;padding:10px 8px;width:100%;caret-color:#fff}
+.field:focus-within{
+  border-color:rgba(255,255,255,.42);
+  box-shadow:0 0 0 3px rgba(224,40,36,.18),0 14px 34px rgba(0,0,0,.55);
+}
+.field input{
+  background:transparent;border:0;outline:0;
+  color:#fff;font-size:16px;padding:10px 8px;width:100%;caret-color:#fff;
+}
 .field input::placeholder{color:rgba(255,255,255,.90)}
 .field button.icon{all:unset;cursor:pointer;border-radius:10px;padding:8px;display:grid;place-items:center;color:#c7cfdb}
 .icon svg{width:22px;height:22px;display:block}
 .submit{
-  margin-top:12px;border:0;border-radius:14px;padding:12px 26px;font-weight:900;font-size:16px;color:#fff;cursor:pointer;
-  background:linear-gradient(180deg,var(--accent),var(--accent-2));transition:transform .08s ease,box-shadow .12s ease
+  margin-top:12px;border:0;border-radius:14px;padding:12px 26px;
+  font-weight:900;font-size:16px;color:#fff;cursor:pointer;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  transition:transform .08s ease,box-shadow .12s ease;
 }
-.submit:hover{box-shadow:0 8px 18px rgba(0,0,0,.25)} .submit:active{transform:translateY(1px) scale(.997)}
+.submit:hover{box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.submit:active{transform:translateY(1px) scale(.997)}
 .help{text-align:center;margin:8px 0 10px;font-size:14px;color:var(--muted)}
-.foot{margin-top:15px;padding:12px 6px 6px;border-top:1px solid rgba(255,255,255,.10);text-align:center;color:#e0e5ec;font-size:13px;line-height:1.45}
+.foot{
+  margin-top:15px;
+  padding:12px 6px 6px;
+  border-top:1px solid rgba(255,255,255,.10);
+  text-align:center;
+  color:#e0e5ec;
+  font-size:13px;
+  line-height:1.45;
+}
 .foot small{display:block}
 
+/* Responsive identisch zur Originalversion */
 @media (max-width:560px){
-  :root{--card-w:94vw;--hd:140px;--title-w:86%;--word-gap:-20px;--title-gap:12px}
-  .brand-stack{transform:translate(-50%,-32%)}
-  .card{padding-top:calc(var(--hd) * 1.10 + var(--title-gap) + 90px)}
+  :root{
+    --card-w:94vw;--hd:116px;--title-w:86%;
+    --word-gap:-24px;--title-gap:12px;
+  }
+  .brand-stack{transform:translate(-50%,-48%)}
+  .card{padding-top:calc(var(--hd) * .78 + var(--title-gap) + 14px)}
 }
 @media (min-width:561px) and (max-width:900px){
-  :root{--card-w:520px;--hd:160px;--title-w:82%;--word-gap:-20px;--title-gap:8px}
-  .brand-stack{transform:translate(-50%,-34%)}
-  .card{padding-top:calc(var(--hd) * 1.05 + var(--title-gap) + 86px)}
+  :root{
+    --card-w:520px;--hd:128px;--title-w:82%;
+    --word-gap:-26px;--title-gap:6px;
+  }
+  .brand-stack{transform:translate(-50%,-50%)}
+  .card{padding-top:calc(var(--hd) * .72 + var(--title-gap) + 14px)}
 }
