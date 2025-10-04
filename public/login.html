@@ -51,16 +51,25 @@
       </div>
 
       <div class="foot">
-        <small>© <span id="y"></span> Hotel-Dashboard</small>
+        <small>
+          © 2025 Hotel-Dashboard<br>
+          Powered by MY HOME HOTEL AM ROTTWEIL GMBH
+        </small>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('y').textContent=new Date().getFullYear();
-    const p=document.getElementById('password'), tp=document.getElementById('togglePw'),
-          eyeOn=document.getElementById('eye-on'), eyeOff=document.getElementById('eye-off');
-    tp.addEventListener('click',()=>{const show=p.type==="password"; p.type=show?"text":"password"; eyeOn.style.display=show?"block":"none"; eyeOff.style.display=show?"none":"block";});
+    document.getElementById('y')?.remove();
+    const p=document.getElementById('password'),
+          tp=document.getElementById('togglePw'),
+          eyeOn=document.getElementById('eye-on'),
+          eyeOff=document.getElementById('eye-off');
+    tp.addEventListener('click',()=>{const show=p.type==="password";
+      p.type=show?"text":"password";
+      eyeOn.style.display=show?"block":"none";
+      eyeOff.style.display=show?"none":"block";
+    });
   </script>
 </body>
 </html>
