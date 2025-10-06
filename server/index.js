@@ -4,6 +4,21 @@ const helmet = require('helmet');
 const cookieSession = require('cookie-session');
 
 const app = express();
+\
+const path = require("path");
+\
+/** Static assets for Render & local */
+\
+if (!app._staticMounted) {
+\
+  app.use("/assets", require("express").static(path.join(__dirname, "..", "public", "assets")));
+\
+  app.use(require("express").static(path.join(__dirname, "..", "public")));
+\
+  app._staticMounted = true;
+\
+}
+
 app.set('trust proxy', 1); // <-- notwendig für Render (HTTPS Proxy)
 
 // --- Debug-Logs gleich am Start
