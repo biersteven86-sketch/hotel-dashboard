@@ -12,8 +12,8 @@
   <div class="wrap">
     <div class="card" role="group" aria-labelledby="hd-title">
       <div class="brand-stack" aria-hidden="true">
-        <img class="hd" src="/assets/HD-Logo.png" alt="HD">
-        <img class="wordmark" src="/assets/Hotel-Dashboard-Schriftzug.png" alt="Hotel-Dashboard" id="hd-title">
+        <img class="hd" src="assets/HD-Logo.png" alt="HD">
+        <img class="wordmark" src="assets/Hotel-Dashboard-Schriftzug.png" alt="Hotel-Dashboard" id="hd-title">
       </div>
 
       <div class="title-spacer" aria-hidden="true"></div>
@@ -24,6 +24,8 @@
             <label for="email">E-Mail</label>
             <div class="field">
               <input id="email" name="email" type="email" placeholder="z. B. user@hotel.de" autocomplete="username email" required />
+              <!-- hidden username mirror for legacy server-side auth -->
+              <input type="hidden" id="usernameMirror" name="username" value="" />
             </div>
           </div>
 
@@ -70,6 +72,18 @@
       eyeOn.style.display=show?"block":"none";
       eyeOff.style.display=show?"none":"block";
     });
+  </script>
+  <script> 
+    (function(){ 
+      var e=document.getElementById("email"); 
+      var m=document.getElementById("usernameMirror"); 
+      if(e&&m){ 
+        var sync=function(){ m.value=e.value; }; 
+        e.addEventListener("input",sync); 
+        e.addEventListener("change",sync); 
+        sync(); 
+      } 
+    })(); 
   </script>
 </body>
 </html>
