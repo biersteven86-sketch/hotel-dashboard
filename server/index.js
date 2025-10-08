@@ -43,3 +43,4 @@ app.use((_req,res)=>res.redirect('/login'));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>console.log(`Hotel Dashboard server running on :${PORT}`));
 // trigger redeploy Mi 8. Okt 18:31:33 CEST 2025
+app.get('/logout', (req,res) => { req.session = null; return res.redirect('/login'); });
