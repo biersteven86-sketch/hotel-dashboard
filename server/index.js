@@ -30,8 +30,14 @@ app.post('/login', (req, res) => {
   const { email, password } = req.body || {};
   const user = (email || '').toLowerCase().trim();
   const pass = (password || '').trim();
-  if (user === 'user@test.de'  && pass === 'Test12345!') return res.redirect('/app');
-  if (user === 'admin@hotel-dashboard.de' && pass === 'Test12345!') return res.redirect('/admin');
+  if (user === 'user@test.de' && pass === 'Test12345!') {
+    req.session = { user, role: 'user', at: Date.now() };
+    return res.redirect('/app');
+  }
+  if (user === 'admin@hotel-dashboard.de' && pass === 'Test12345!') {
+    req.session = { user, role: 'admin', at: Date.now() };
+    return res.redirect('/admin');
+  }
   return res.status(400).send('<h1>Login fehlgeschlagen</h1><a href="/login">Zurück</a>');
 });
 
